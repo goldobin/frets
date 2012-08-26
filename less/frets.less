@@ -1,0 +1,52 @@
+@selected : #280839;
+
+.frets {
+    display: table;
+    .line {
+        display: table-row;
+
+        div {
+                display: table-cell;
+                border-left: 1px solid #d2691e;
+                padding: 5px;
+                cursor: pointer;
+                font-size: 12px;
+                color: #eee;
+        }
+    }
+
+    .selected {
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .selected.octave-1 {
+        background-color: @selected;
+    }
+
+    .selected.octave-2 {
+        background-color: lighten(@selected, 12%);
+    }
+
+    .selected.octave-3 {
+        background-color: lighten(@selected, 24%);
+    }
+
+    .selected.octave-4 {
+        background-color: lighten(@selected, 36%);
+    }
+
+    .selected.octave-5 {
+        background-color: lighten(@selected, 48%);
+    }
+
+    .selected.octave-6 {
+        background-color: lighten(@selected, 60%);
+    }
+
+    .selected.octave-7 {
+        background-color: lighten(@selected, 72%);
+    }
+}
+
