@@ -1,10 +1,4 @@
-/**
- * Created with JetBrains WebStorm.
- * User: glide
- * Date: 26.08.12
- * Time: 12:29
- * To change this template use File | Settings | File Templates.
- */
+
 
 (function($, _) {
 
@@ -21,7 +15,90 @@ var PITCH_NAMES = [ "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "
     MAJOR_SIXTH = +9,
     MINOR_SEVENTH = +10,
     MAJOR_SEVENTH = +11,
-    PERFECT_OCTAVE_UNISON = +12;
+    PERFECT_OCTAVE_UNISON = +12,
+    INTERVAL_CLASSES = [
+        "perfect-unison",
+        "minor-second",
+        "major-second",
+        "minor-third",
+        "major-third",
+        "perfect-fourth",
+        "tritone",
+        "perfect-fifth",
+        "minor-sixth",
+        "major-sixth",
+        "minor-seventh",
+        "major-seventh"
+    ],
+    MAJOR_SCALE = [
+        PERFECT_UNISON,
+        MAJOR_SECOND,
+        MAJOR_THIRD,
+        PERFECT_FOURTH,
+        PERFECT_FIFTH,
+        MAJOR_SIXTH,
+        MAJOR_SEVENTH
+    ],
+    MAJOR_PENTATONIC_SCALE = [
+        PERFECT_UNISON,
+        MAJOR_SECOND,
+        MAJOR_THIRD,
+        PERFECT_FIFTH,
+        MAJOR_SIXTH
+    ],
+    NATURAL_MINOR_SCALE = [
+        PERFECT_UNISON,
+        MAJOR_SECOND,
+        MINOR_THIRD,
+        PERFECT_FOURTH,
+        PERFECT_FIFTH,
+        MINOR_SIXTH,
+        MINOR_SEVENTH
+    ],
+    MAJOR_CHORD = [
+        PERFECT_UNISON,
+        MAJOR_THIRD,
+        PERFECT_FIFTH
+    ],
+    MINOR_CHORD = [
+        PERFECT_UNISON,
+        MINOR_THIRD,
+        PERFECT_FIFTH
+    ],
+    DOMINANT_SEVENTH_CHORD = [
+        PERFECT_UNISON,
+        MAJOR_THIRD,
+        PERFECT_FIFTH,
+        MINOR_SEVENTH
+    ],
+    MAJOR_SIXTH_CHORD = [
+        PERFECT_UNISON,
+        MAJOR_THIRD,
+        PERFECT_FIFTH,
+        MAJOR_SIXTH
+    ],
+    MAJOR_SEVENTH_CHORD = [
+        PERFECT_UNISON,
+        MAJOR_THIRD,
+        PERFECT_FIFTH,
+        MAJOR_SEVENTH
+    ],
+    MINOR_SEVENTH_CHORD = [
+        PERFECT_UNISON,
+        MINOR_THIRD,
+        PERFECT_FIFTH,
+        MAJOR_SEVENTH
+    ],
+    AEOLIAN_MODE = NATURAL_MINOR_SCALE,
+    MIXOLYDIAN_MODE = [
+        PERFECT_UNISON,
+        MAJOR_SECOND,
+        MAJOR_THIRD,
+        PERFECT_FOURTH,
+        PERFECT_FIFTH,
+        MAJOR_SIXTH,
+        MINOR_SEVENTH
+    ];
 
 
 function Pitch(nameOrIndex, octave) {
@@ -102,38 +179,22 @@ FretBoard.prototype = {
             result = new Array(intervals.length);
 
         _.each(intervals, function(v, i) {
-            var intervalPitch = keyPitch + v;
+            var intervalPitch = keyPitch.increment(v);
             result[i] = self.all(intervalPitch.name);
         });
         return result;
     },
     majorScales: function(key) {
         return this.scales(
-            key, [
-                PERFECT_UNISON,
-                MAJOR_SECOND,
-                MAJOR_THIRD,
-                PERFECT_FOURTH,
-                PERFECT_FIFTH,
-                MAJOR_SIXTH,
-                MAJOR_SEVENTH
-            ])
+            key, MAJOR_SCALE)
     },
     majorChords: function(key) {
         return this.scales(
-            key, [
-                PERFECT_UNISON,
-                MAJOR_THIRD,
-                PERFECT_FIFTH
-            ])
+            key, MAJOR_CHORD)
     },
     minorChords: function(key) {
         return this.scales(
-            key, [
-                PERFECT_UNISON,
-                MINOR_THIRD,
-                PERFECT_FIFTH
-            ])
+            key, MINOR_CHORD)
     },
     majorSvenChords: function(key) {
 
@@ -197,6 +258,10 @@ function buildOctaveClass(p) {
     return "octave-" + p.octave;
 }
 
+function buildIntervalClass(interval) {
+    return INTERVAL_CLASSES[interval];
+}
+
 
 $.fn.frets = function() {
     var self = this,
@@ -247,11 +312,25 @@ $.fn.frets = function() {
 
             elements[s][f] = createPitchElement(pitch)
                 .click(function() {
-                    self.find(".pitch").removeClass("selected");
+                    var pitches = self.find(".pitch");
+                    pitches.removeClass("key");
+
+                    _.each(INTERVAL_CLASSES, function(className) {
+                        pitches.removeClass(className);
+                    });
                     var samePitches = fretBoard.all(pitch.name);
                     _.each(samePitches, function(v, i) {
-                        elements[v.string][v.fret].addClass("selected");
+                        elements[v.string][v.fret].addClass("key");
+                    });
+
+                    var intervals = NATURAL_MINOR_SCALE;
+                    var positionsOfIntervals = fretBoard.scales(pitch.name, intervals);
+                    _.each(positionsOfIntervals, function(coords, intervalIndex) {
+                        _.each(coords, function(v) {
+                            elements[v.string][v.fret].addClass(buildIntervalClass(intervals[intervalIndex]));
+                        });
                     })
+
                 })
                 .appendTo(line);
         });
