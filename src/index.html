@@ -89,25 +89,93 @@
       <li><b>Scales</b> <span class="divider">/</span></li>
       <li class="active">Major Pentatonic</li>
     </ul>
-    <div class="key">
-        <div class="btn-toolbar" style="text-align: center">
-            <div class="btn-group">
-                <button class="btn">A</button>
-                <button class="btn">A#</button>
-                <button class="btn">B</button>
-                <button class="btn">C</button>
-                <button class="btn">C#</button>
-                <button class="btn">D</button>
-                <button class="btn">B</button>
-                <button class="btn">D#</button>
-                <button class="btn">E</button>
-                <button class="btn">F</button>
-                <button class="btn">F#</button>
-                <button class="btn">G</button>
-                <button class="btn">G#</button>
+    <div class="intervals">
+        <div class="step first">
+            <div class="title">1-st</div>
+            <div class="btn-toolbar">
+                <div class="btn-group"><span class="pitch-label">key</span></div>
+                <div class="btn-group">
+                <button class="btn btn-small">A</button>
+                <button class="btn dropdown-toggle btn-small" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="#key-a">A</a></li>
+                    <li><a tabindex="-1" href="#key-a-sharp">A#</a></li>
+                    <li><a tabindex="-1" href="#key-a">B</a></li>
+                    <li><a tabindex="-1" href="#key-a">C</a></li>
+                    <li><a tabindex="-1" href="#key-a">C#</a></li>
+                    <li><a tabindex="-1" href="#key-a">D</a></li>
+                    <li><a tabindex="-1" href="#key-a">D#</a></li>
+                    <li><a tabindex="-1" href="#key-a">E</a></li>
+                    <li><a tabindex="-1" href="#key-a">F</a></li>
+                    <li><a tabindex="-1" href="#key-a">F#</a></li>
+                    <li><a tabindex="-1" href="#key-a">G</a></li>
+                    <li><a tabindex="-1" href="#key-a">G#</a></li>
+                </ul>
+                </div>
             </div>
         </div>
+        <div class="step">
+            <div class="title">2-nd</div>
+            <div class="btn-toolbar">
+                <div class="btn-group"><span class="pitch-label">minor</span></div>
+                <button class="btn btn-small">A#</button>
+                <div class="btn-group"><span class="pitch-label">major</span></div>
+                <button class="btn btn-small">B</button>
+            </div>
+        </div>
+        <div class="step">
+            <div class="title">3-nd</div>
+            <div class="btn-toolbar">
+                <div class="btn-group"><span class="pitch-label">minor</span></div>
+                <button class="btn btn-small">C</button>
+                <div class="btn-group"><span class="pitch-label">major</span></div>
+                <button class="btn btn-small">C#</button>
+            </div>
+        </div>
+        <div class="step fourth">
+            <div class="title">4-nd</div>
+            <div class="btn-toolbar">
+                <div class="btn-group"><span class="pitch-label">perfect</span></div>
+                <button class="btn btn-small">D</button>
+            </div>
+        </div>
+        <div class="step tritone">
+            <div class="title">TRI</div>
+            <div class="btn-toolbar">
+                <div class="btn-group"><span class="pitch-label">tritone</span></div>
+                <button class="btn btn-small">D#</button>
+            </div>
+        </div>
+        <div class="step fifth">
+            <div class="title">5-nd</div>
+            <div class="btn-toolbar">
+                <div class="btn-group"><span class="pitch-label">perfect</span></div>
+                <button class="btn btn-small">E</button>
+            </div>
+        </div>
+        <div class="step">
+            <div class="title">6-th</div>
+            <div class="btn-toolbar">
+                <div class="btn-group"><span class="pitch-label">minor</span></div>
+                <button class="btn btn-small">F</button>
+                <div class="btn-group"><span class="pitch-label">major</span></div>
+                <button class="btn btn-small">F#</button>
+            </div>
+        </div>
+        <div class="step">
+            <div class="title">7-th</div>
+            <div class="btn-toolbar">
+                <div class="btn-group"><span class="pitch-label">minor</span></div>
+                <button class="btn btn-small">G</button>
+                <div class="btn-group"><span class="pitch-label">major</span></div>
+                <button class="btn btn-small">G#</button>
+            </div>
+        </div>
+
     </div>
+
     <div class="well" style="overflow-x: scroll;">
         <div class="frets"></div>
     </div>
@@ -125,7 +193,17 @@
 <script>
     $(function() {
         $(".frets").frets({size: 24});
+        $(".intervals .btn").click(function() {
+            if ($(this).hasClass("dropdown-toggle")) {
+                return;
+            }
+
+            $(this).toggleClass("btn-warning");
+        })
+
     });
+
+
 </script>
 
 </body>
