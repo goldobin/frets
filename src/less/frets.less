@@ -1,4 +1,5 @@
-@key-color: #3077eb;
+@key-color: #ddcfd1;
+@interval-color: #57a7eb;
 
 @major-second-color: #EBA31B;
 @minor-second-color: #cc5f0b;
@@ -16,55 +17,105 @@
 @minor-seventh-color: #498333;
 
 
-.frets {
+.fretboard {
     display: table;
     width: 1280px;
     margin: 20px;
-    .line {
+    .fret-numbers {
         display: table-row;
-        div {
-                display: table-cell;
-                border-left: 1px solid #d2691e;
-                padding: 5px;
-                cursor: pointer;
-                font-size: 12px;
-                color: #eee;
+        .fret-number {
+            display: table-cell;
+            text-align: center;
+            .fret-number-label {
+                font-size: 75%;
+                //background-color: @major-second-color;
+                color: #999;
+                padding: 3px;
+                //border-radius: 10px;
+            }
         }
     }
 
-    .key,
-    .minor-second,
-    .major-second,
-    .minor-third,
-    .major-third,
-    .perfect-fourth,
-    .tritone,
-    .perfect-fifth,
-    .minor-sixth,
-    .major-sixth,
-    .minor-seventh,
-    .major-seventh {
-        color: #fff;
-        text-align: center;
-        /*border-radius: 10px;*/
+    .string-1,
+    .string-2 {
+        background: #eee;
     }
+    .string-3,
+    .string-4,
+    .string-5,
+    .string-6 {
+        background: #e5e5e5;
+    }
+
+    .string {
+        display: table-row;
+        .pitch {
+            display: table-cell;
+            border-left: 1px solid #d2691e;
+            padding: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            color: #ccc;
+            text-align: center;
+
+            .pitch-name {
+                padding: 4px;
+                border-radius: 12px;
+            }
+            .pitch-interval-name {
+                position: relative;
+                right: 0;
+                top: 0;
+            }
+        }
+    }
+
+//    .key,
+//    .minor-second,
+//    .major-second,
+//    .minor-third,
+//    .major-third,
+//    .perfect-fourth,
+//    .tritone,
+//    .perfect-fifth,
+//    .minor-sixth,
+//    .major-sixth,
+//    .minor-seventh,
+//    .major-seventh {
+//
+//
+//    }
 
     .scale-element(@color) {
-        background-color: @color;
+        .pitch-name {
+            background-color: @color;
+            color: #fff;
+        }
     }
 
-    .key { .scale-element(@key-color) }
-    .minor-second { .scale-element(@minor-second-color) }
-    .major-second { .scale-element(@major-second-color) }
-    .minor-third { .scale-element(@minor-third-color) }
-    .major-third { .scale-element(@major-third-color) }
-    .perfect-fourth { .scale-element(@perfect-fourth-color) }
 
-    .perfect-fifth { .scale-element(@perfect-fifth-color) }
-    .minor-sixth { .scale-element(@minor-sixth-color) }
-    .major-sixth { .scale-element(@major-sixth-color) }
-    .minor-seventh { .scale-element(@minor-seventh-color) }
-    .major-seventh { .scale-element(@major-seventh-color) }
+    .pitch.selected {
+        .pitch-name {
+            background-color: @interval-color;
+            color: #fff;
+        }
+    }
+
+    .pitch.key {
+        background-color: @key-color;
+        color: #fff;
+    }
+//    .minor-second { .scale-element(@minor-second-color) }
+//    .major-second { .scale-element(@major-second-color) }
+//    .minor-third { .scale-element(@minor-third-color) }
+//    .major-third { .scale-element(@major-third-color) }
+//    .perfect-fourth { .scale-element(@perfect-fourth-color) }
+//
+//    .perfect-fifth { .scale-element(@perfect-fifth-color) }
+//    .minor-sixth { .scale-element(@minor-sixth-color) }
+//    .major-sixth { .scale-element(@major-sixth-color) }
+//    .minor-seventh { .scale-element(@minor-seventh-color) }
+//    .major-seventh { .scale-element(@major-seventh-color) }
 
 //    .octave-1-mixin(@color) { background-color: darken(@color, 36%); }
 //    .octave-2-mixin(@color) { background-color: darken(@color, 24%); }
