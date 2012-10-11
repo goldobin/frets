@@ -29,12 +29,6 @@ var music = {};
             interval.MINOR_THIRD,
             interval.PERFECT_FIFTH
         ],
-        DOMINANT_SEVENTH_CHORD: [
-            interval.PERFECT_UNISON,
-            interval.MAJOR_THIRD,
-            interval.PERFECT_FIFTH,
-            interval.MINOR_SEVENTH
-        ],
         MAJOR_SIXTH_CHORD: [
             interval.PERFECT_UNISON,
             interval.MAJOR_THIRD,
@@ -52,6 +46,12 @@ var music = {};
             interval.MINOR_THIRD,
             interval.PERFECT_FIFTH,
             interval.MAJOR_SEVENTH
+        ],
+        DOMINANT_SEVENTH_CHORD: [
+            interval.PERFECT_UNISON,
+            interval.MAJOR_THIRD,
+            interval.PERFECT_FIFTH,
+            interval.MINOR_SEVENTH
         ]
     },
     scale = {

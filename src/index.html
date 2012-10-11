@@ -8,87 +8,74 @@
     <style>
 
         body {
-          padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+          /*padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
         }
 
     </style>
 </head>
 <body>
 
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-
-
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li>
-                        <a href="#">
-                            Fretboard
-                        </a>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Scales <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="nav-header">Major Scales</li>
-                            <li><a href="#">Major</a></li>
-                            <li><a href="#">Major Pentatonic</a></li>
-                            <li class="divider"></li>
-                            <li class="nav-header">Minor Scales</li>
-                            <li><a href="#">Natural Minor</a></li>
-                            <li><a href="#">Harmonic Minor</a></li>
-                            <li><a href="#">Melodic Minor</a></li>
-                            <li><a href="#">Minor Pentatonic</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Chords <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Majors</a></li>
-                            <li><a href="#">Minors</a></li>
-                            <li><a href="#">Sixths</a></li>
-                            <li><a href="#">Sevenths</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Modes <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Ionian</a></li>
-                            <li><a href="#">Dorian</a></li>
-                            <li><a href="#">Phrygian</a></li>
-                            <li><a href="#">Lydian</a></li>
-                            <li><a href="#">Mixolydian</a></li>
-                            <li><a href="#">Aeolian</a></li>
-                            <li><a href="#">Locrian</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-    </div>
-</div>
 <div class="container">
-    <div class="project-info">
+    <div class="page-header">
         <h1>Frets!</h1>
         <p>
             This project is for folks who learning guitar and music theory: scales, chords, modes.
         </p>
     </div>
-    <ul class="breadcrumb">
-      <li><b>Scales</b> <span class="divider">/</span></li>
-      <li class="active">Major Pentatonic</li>
-    </ul>
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Scales <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li class="nav-header">Major Scales</li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-scale">Major</a></li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-pentatonic-scale">Major Pentatonic</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Minor Scales</li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="natural-minor-scale">Natural Minor</a></li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="harmonic-minor-scale">Harmonic Minor</a></li>
+                    <li><a href="#"  class="interval-sequence-nav-element" data-interval-sequence-name="melodic-minor-scale">Melodic Minor</a></li>
+                    <li><a href="#"  class="interval-sequence-nav-element" data-interval-sequence-name="minor-pentatonic-scale">Minor Pentatonic</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Chords <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-chord">Major</a></li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="minor-chord">Minor</a></li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-sixth-chord">Major Sixth</a></li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="dominant-seventh-chord">Dominant Seventh</a></li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-seventh-chord">Major Seventh</a></li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="minor-seventh-chord">Minor Seventh</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Modes <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="ionian-mode">Ionian</a></li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="dorian-mode">Dorian</a></li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="phrygian-mode">Phrygian</a></li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="lydian-mode">Lydian</a></li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="mixolydian-mode">Mixolydian</a></li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="aeolian-mode">Aeolian</a></li>
+                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="locrian-mode">Locrian</a></li>
+                </ul>
+            </li>
+            <!--li>
+                <form class="form-search">
+                    <div class="input-append">
+                        <input type="text" class="span2 search-query">
+                        <button type="submit" class="btn">Search</button>
+                    </div>
+                </form>
+            </li-->
+        </ul>
+    </div>
+
     <div class="intervals">
         <div class="step first">
             <div class="title">1-st</div>
@@ -149,7 +136,7 @@
             </div>
         </div>
         <div class="step fifth">
-            <div class="title">5-nd</div>
+            <div class="title">5-th</div>
             <div class="btn-toolbar">
                 <div class="btn-group"><span class="pitch-label">perfect</span></div>
                 <button class="btn btn-small btn-interval-pitch">E</button>
@@ -176,6 +163,12 @@
 
     </div>
 
+    <ul class="breadcrumb">
+        <li><b>Scales</b> <span class="divider">/</span></li>
+        <li class="active">Major Pentatonic</li>
+    </ul>
+
+
     <div class="well" style="overflow-x: scroll;">
         <div class="fretboard"></div>
     </div>
@@ -192,25 +185,10 @@
 <script src="js/music.js"></script>
 <script src="js/fretboard.js"></script>
 <script src="js/intervals.js"></script>
+<script src="js/frets.js"></script>
 <script>
     $(function() {
-        $(".fretboard")
-        .fretboard({size: 24})
-        .on("keyChange", function() {
-            $(".intervals").intervals("key", $(this).fretboard("key"));
-        });
-
-        $(".intervals")
-        .intervals()
-        .on("intervalsChange", function() {
-            $(".fretboard").fretboard("intervals", $(this).intervals("intervals"))
-        })
-        .on("keyChange", function() {
-            $(".fretboard").fretboard("key", $(this).intervals("key"))
-        });
-
-
-
+        $("body").frets();
     });
 
 
