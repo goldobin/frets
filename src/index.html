@@ -5,76 +5,27 @@
     <link href="../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="../lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="stylesheet/less" type="text/css" href="less/frets.less">
+
     <style>
 
         body {
           /*padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            padding-bottom: 450px;
         }
 
     </style>
 </head>
 <body>
 
+<a href="https://github.com/goldobin/frets"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+
+<div class="content-header">
+    <div class="container">
+        <span class="brand">Frets.</span>&nbsp;&nbsp;Lets play with music!
+    </div>
+</div>
+
 <div class="container">
-    <div class="page-header">
-        <h1>Frets!</h1>
-        <p>
-            This project is for folks who learning guitar and music theory: scales, chords, modes.
-        </p>
-    </div>
-    <div>
-        <ul class="nav nav-tabs">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Scales <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li class="nav-header">Major Scales</li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-scale">Major</a></li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-pentatonic-scale">Major Pentatonic</a></li>
-                    <li class="divider"></li>
-                    <li class="nav-header">Minor Scales</li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="natural-minor-scale">Natural Minor</a></li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="harmonic-minor-scale">Harmonic Minor</a></li>
-                    <li><a href="#"  class="interval-sequence-nav-element" data-interval-sequence-name="melodic-minor-scale">Melodic Minor</a></li>
-                    <li><a href="#"  class="interval-sequence-nav-element" data-interval-sequence-name="minor-pentatonic-scale">Minor Pentatonic</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Chords <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-chord">Major</a></li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="minor-chord">Minor</a></li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-sixth-chord">Major Sixth</a></li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="dominant-seventh-chord">Dominant Seventh</a></li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-seventh-chord">Major Seventh</a></li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="minor-seventh-chord">Minor Seventh</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Modes <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="ionian-mode">Ionian</a></li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="dorian-mode">Dorian</a></li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="phrygian-mode">Phrygian</a></li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="lydian-mode">Lydian</a></li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="mixolydian-mode">Mixolydian</a></li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="aeolian-mode">Aeolian</a></li>
-                    <li><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="locrian-mode">Locrian</a></li>
-                </ul>
-            </li>
-            <!--li>
-                <form class="form-search">
-                    <div class="input-append">
-                        <input type="text" class="span2 search-query">
-                        <button type="submit" class="btn">Search</button>
-                    </div>
-                </form>
-            </li-->
-        </ul>
-    </div>
 
     <div class="intervals">
         <div class="step first">
@@ -160,20 +111,85 @@
                 <button class="btn btn-small btn-interval-pitch">G#</button>
             </div>
         </div>
-
     </div>
 
-    <ul class="breadcrumb">
-        <li><b>Scales</b> <span class="divider">/</span></li>
-        <li class="active">Major Pentatonic</li>
-    </ul>
+    <div class="nav-intervals">
+        <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td style="width: 50%" colspan="2">Scales</td>
+            <td style="width: 50%" colspan="2">Chords</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="nav-header">Major Scales</td>
+            <td>&nbsp;</td>
+            <td class="nav-header">Base Triads</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width: 25%"><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-scale">Major</a></td>
+            <td style="width: 25%"><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="ionian-mode">Ionian</a></td>
+            <td style="width: 25%"><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-chord">Major</a></td>
+            <td style="width: 25%"><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="minor-chord">Minor</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-pentatonic-scale">Major Pentatonic</a></td>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="dorian-mode">Dorian</a></td>
+            <td class="nav-header">Modes</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="nav-header">Minor Scales</td>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="phrygian-mode">Phrygian</a></td>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="sixth-chord">6th</a></td>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="dominant-seventh-chord">Dominant 7th</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="natural-minor-scale">Natural Minor</a></td>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="lydian-mode">Lydian</a></td>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="ninth-chord">9th</a></td>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="major-seventh-chord">Major 7th</a></td>
+        </tr>
+        <tr>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="harmonic-minor-scale">Harmonic Minor</a></td>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="mixolydian-mode">Mixolydian</a></td>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="thirteenth-chord">13th</a></td>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="minor-seventh-chord">Minor 7th</a></td>
+        </tr>
+        <tr>
+            <td><a href="#"  class="interval-sequence-nav-element" data-interval-sequence-name="melodic-minor-scale">Melodic Minor</a></td>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="aeolian-mode">Aeolian</a></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><a href="#"  class="interval-sequence-nav-element" data-interval-sequence-name="minor-pentatonic-scale">Minor Pentatonic</a></td>
+            <td><a href="#" class="interval-sequence-nav-element" data-interval-sequence-name="locrian-mode">Locrian</a></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        </tbody>
+        </table>
+        <!--<div>-->
+            <!--<a class="nav-intervals-hide" href="#">Hide <i class="icon-chevron-up"></i></a>-->
+        <!--</div>-->
+    </div>
+    <!--<div>-->
+        <!--<a class="nav-intervals-show" href="#">Scales and Chords <i class="icon-chevron-down"></i></a>-->
+    <!--</div>-->
+</div>
 
-
-    <div class="well" style="overflow-x: scroll;">
+<div class="content-footer">
+    <div class="fretboard-container">
         <div class="fretboard"></div>
     </div>
-    <div class="copyright">
-        <span class="info">&copy; 2012</span> Oleksandr Goldobin
+
+    <div class="container copyright">
+        <p>
+            <span class="info">&copy; 2012</span> Oleksandr Goldobin
+        </p>
     </div>
 </div>
 

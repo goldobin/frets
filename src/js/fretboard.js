@@ -19,6 +19,8 @@ var DEFAULTS = {
     "major-sixth",
     "minor-seventh",
     "major-seventh"
+], ONE_DOT_MARK_POSITIONS = [
+    3, 5, 7, 9
 ];
 
 function nutToFretDistance(scale, fret) {
@@ -165,27 +167,25 @@ $.fn.fretboard = function() {
         element.data("intervals", []);
 
 
-        if (settings.displayNumbers) {
-            var fretNumbersLine = $("<div>").addClass("fret-numbers").appendTo(element);
+        var fretNumbersLine = $("<div>").addClass("fret-numbers").appendTo(element);
+
+        $("<div>")
+            .html("&nbsp;")
+            .addClass("fret-number")
+            .css("width", "2%")
+            .appendTo(fretNumbersLine);
+
+        var SCALE = buildFretLengthsScaleInPercents(settings.size, 98);
+
+        for (var i = 0; i < settings.size; i++) {
 
             $("<div>")
-                .html("&nbsp;")
+                .css("width", SCALE[i] + "%")
                 .addClass("fret-number")
-                .css("width", "2%")
+                .append(
+                    $("<span>").addClass("fret-number-label").html(i + 1)
+                )
                 .appendTo(fretNumbersLine);
-
-            var SCALE = buildFretLengthsScaleInPercents(settings.size, 98);
-
-            for (var i = 0; i < settings.size; i++) {
-
-                $("<div>")
-                    .css("width", SCALE[i] + "%")
-                    .addClass("fret-number")
-                    .append(
-                        $("<span>").addClass("fret-number-label").html(i + 1)
-                    )
-                    .appendTo(fretNumbersLine);
-            }
         }
 
         _.times(guitar.stringCount(), function(s) {
@@ -193,6 +193,13 @@ $.fn.fretboard = function() {
                 .addClass("string")
                 .addClass("string-" + (s + 1))
                 .appendTo(element);
+
+            if (s == 0) {
+                string.addClass("string-first");
+            } else if (s == guitar.stringCount() - 1) {
+                string.addClass("string-last")
+            }
+
             _.times(guitar.pithPerStringCount(), function(f) {
                 var pitch = guitar.at({
                     string: s,
@@ -209,6 +216,37 @@ $.fn.fretboard = function() {
                     .appendTo(string);
             });
         });
+
+        var fretMarksLine = $("<div>").addClass("fret-marks").appendTo(element),
+            mark = "",
+            fretIndex = 0;
+
+        $("<div>")
+            .html("&nbsp;")
+            .addClass("fret-mark")
+            .appendTo(fretMarksLine);
+
+
+        for (i = 0; i < settings.size; i++) {
+
+            fretIndex = i + 1;
+
+            fretIndex = fretIndex - Math.floor(fretIndex / 12) * 12;
+
+            if (fretIndex == 0)  {
+                mark = "&middot;&nbsp;&middot;";
+            } else if (ONE_DOT_MARK_POSITIONS.indexOf(fretIndex) > -1){
+                mark = "&middot;";
+            } else {
+                mark = "&nbsp;"
+            }
+            $("<div>")
+                .addClass("fret-mark")
+                .append(
+                $("<span>").addClass("fret-mark-label").html(mark))
+            .appendTo(fretMarksLine);
+        }
+
     });
 
     return this;

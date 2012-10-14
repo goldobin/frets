@@ -3,6 +3,21 @@ var music = {};
 
 (function(m, _) {
 
+    function rotate(intervals, steps) {
+        var a = intervals
+            .slice(steps, intervals.length)
+            .concat(intervals.slice(0, steps)),
+            result = [];
+
+        return _.map(a, function(interval) {
+
+            var result = interval - a[0];
+            return result < 0
+                ? result + 12
+                : result
+        })
+    }
+
     var interval = {
         PERFECT_UNISON: 0,
         MINOR_SECOND: +1,
@@ -17,42 +32,51 @@ var music = {};
         MINOR_SEVENTH: +10,
         MAJOR_SEVENTH: +11,
         PERFECT_OCTAVE_UNISON: +12
-    },
+    };
+
+    _.extend(interval, {
+        MAJOR_NINTH: interval.MAJOR_SECOND,
+        PERFECT_ELEVENTH: interval.PERFECT_FOURTH,
+        MAJOR_THIRTEENTH: interval.MAJOR_SIXTH
+    });
+
+    var MAJOR_TRIAD = [
+        interval.PERFECT_UNISON,
+        interval.MAJOR_THIRD,
+        interval.PERFECT_FIFTH
+    ],
+    MINOR_TRIAD = [
+        interval.PERFECT_UNISON,
+        interval.MINOR_THIRD,
+        interval.PERFECT_FIFTH
+    ],
     chord = {
-        MAJOR_CHORD: [
-            interval.PERFECT_UNISON,
-            interval.MAJOR_THIRD,
-            interval.PERFECT_FIFTH
-        ],
-        MINOR_CHORD: [
-            interval.PERFECT_UNISON,
-            interval.MINOR_THIRD,
-            interval.PERFECT_FIFTH
-        ],
-        MAJOR_SIXTH_CHORD: [
+        MAJOR_CHORD: MAJOR_TRIAD,
+        MINOR_CHORD: MINOR_TRIAD,
+        SIXTH_CHORD: [
             interval.PERFECT_UNISON,
             interval.MAJOR_THIRD,
             interval.PERFECT_FIFTH,
             interval.MAJOR_SIXTH
         ],
-        MAJOR_SEVENTH_CHORD: [
-            interval.PERFECT_UNISON,
-            interval.MAJOR_THIRD,
-            interval.PERFECT_FIFTH,
+        MAJOR_SEVENTH_CHORD: MAJOR_TRIAD.concat([
             interval.MAJOR_SEVENTH
-        ],
-        MINOR_SEVENTH_CHORD: [
-            interval.PERFECT_UNISON,
-            interval.MINOR_THIRD,
-            interval.PERFECT_FIFTH,
+        ]),
+        MINOR_SEVENTH_CHORD: MINOR_TRIAD.concat([
             interval.MAJOR_SEVENTH
-        ],
-        DOMINANT_SEVENTH_CHORD: [
-            interval.PERFECT_UNISON,
-            interval.MAJOR_THIRD,
-            interval.PERFECT_FIFTH,
+        ]),
+        DOMINANT_SEVENTH_CHORD: MAJOR_TRIAD.concat([
             interval.MINOR_SEVENTH
-        ]
+        ]),
+        NINTH_CHORD: MAJOR_TRIAD.concat([
+            interval.MINOR_SEVENTH,
+            interval.MAJOR_NINTH
+        ]),
+        THIRTEENTH_CHORD: MAJOR_TRIAD.concat([
+            interval.MINOR_SEVENTH,
+            interval.MAJOR_NINTH,
+            interval.MAJOR_THIRTEENTH
+        ])
     },
     scale = {
         MAJOR_SCALE: [
@@ -79,19 +103,41 @@ var music = {};
             interval.PERFECT_FIFTH,
             interval.MINOR_SIXTH,
             interval.MINOR_SEVENTH
-        ]
-    },
-    mode = {
-        AEOLIAN_MODE: scale.NATURAL_MINOR_SCALE,
-        MIXOLYDIAN_MODE: [
+        ],
+        HARMONIC_MINOR_SCALE: [
             interval.PERFECT_UNISON,
             interval.MAJOR_SECOND,
-            interval.MAJOR_THIRD,
+            interval.MINOR_THIRD,
+            interval.PERFECT_FOURTH,
+            interval.PERFECT_FIFTH,
+            interval.MINOR_SIXTH,
+            interval.MAJOR_SEVENTH
+        ],
+        MELODIC_MINOR_SCALE: [
+            interval.PERFECT_UNISON,
+            interval.MAJOR_SECOND,
+            interval.MINOR_THIRD,
             interval.PERFECT_FOURTH,
             interval.PERFECT_FIFTH,
             interval.MAJOR_SIXTH,
+            interval.MAJOR_SEVENTH
+        ],
+        MINOR_PENTATONIC_SCALE: [
+            interval.PERFECT_UNISON,
+            interval.MINOR_THIRD,
+            interval.PERFECT_FOURTH,
+            interval.PERFECT_FIFTH,
             interval.MINOR_SEVENTH
         ]
+    },
+    mode = {
+        IONIAN_MODE: scale.MAJOR_SCALE,
+        DORIAN_MODE: rotate(scale.MAJOR_SCALE, 1),
+        PHRYGIAN_MODE: rotate(scale.MAJOR_SCALE, 2),
+        LYDIAN_MODE: rotate(scale.MAJOR_SCALE, 3),
+        MIXOLYDIAN_MODE: rotate(scale.MAJOR_SCALE, 4),
+        AEOLIAN_MODE: rotate(scale.MAJOR_SCALE, 5),
+        LOCRIAN_MODE: rotate(scale.MAJOR_SCALE, 6)
     };
 
     _.extend(m, {

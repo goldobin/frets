@@ -1,5 +1,8 @@
+@import "elements.less";
+@import url(http://fonts.googleapis.com/css?family=Norican);
+
 @key-color: #ddcfd1;
-@interval-color: #57a7eb;
+@interval-color: #5393bd;
 
 @major-second-color: #EBA31B;
 @minor-second-color: #cc5f0b;
@@ -16,210 +19,30 @@
 @major-seventh-color: #65bd1b;
 @minor-seventh-color: #498333;
 
+.content-header {
 
-.fretboard {
-    display: table;
-    width: 1280px;
-    margin: 20px;
-    .fret-numbers {
-        display: table-row;
-        .fret-number {
-            display: table-cell;
-            text-align: center;
-            .fret-number-label {
-                font-size: 75%;
-                //background-color: @major-second-color;
-                color: #999;
-                padding: 3px;
-                //border-radius: 10px;
-            }
-        }
-    }
+    background: #5393bd;
+    padding: 15px;
+    margin-bottom: 20px;
+    .drop-shadow(0, 0, 20px, 0.5);
+    border-bottom: 1px dashed  #1b2436;
 
-    .string-1,
-    .string-2 {
-        background: #eee;
-    }
-    .string-3,
-    .string-4,
-    .string-5,
-    .string-6 {
-        background: #e5e5e5;
-    }
+    color: #1b2436;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 
-    .string {
-        display: table-row;
-        .pitch {
-            display: table-cell;
-            border-left: 1px solid #d2691e;
-            padding: 5px;
-            cursor: pointer;
-            font-size: 12px;
-            color: #ccc;
-            text-align: center;
-
-            .pitch-name {
-                padding: 4px;
-                border-radius: 12px;
-            }
-            .pitch-interval-name {
-                position: relative;
-                right: 0;
-                top: 0;
-            }
-        }
-    }
-
-//    .key,
-//    .minor-second,
-//    .major-second,
-//    .minor-third,
-//    .major-third,
-//    .perfect-fourth,
-//    .tritone,
-//    .perfect-fifth,
-//    .minor-sixth,
-//    .major-sixth,
-//    .minor-seventh,
-//    .major-seventh {
-//
-//
-//    }
-
-    .scale-element(@color) {
-        .pitch-name {
-            background-color: @color;
-            color: #fff;
-        }
-    }
-
-
-    .pitch.selected {
-        .pitch-name {
-            background-color: @interval-color;
-            color: #fff;
-        }
-    }
-
-    .pitch.key {
-        background-color: @key-color;
+    .brand {
         color: #fff;
+        font-family: 'Norican', cursive;
+        font-size: 36px;
+        text-shadow: 2px 2px #1b2436;
     }
-//    .minor-second { .scale-element(@minor-second-color) }
-//    .major-second { .scale-element(@major-second-color) }
-//    .minor-third { .scale-element(@minor-third-color) }
-//    .major-third { .scale-element(@major-third-color) }
-//    .perfect-fourth { .scale-element(@perfect-fourth-color) }
-//
-//    .perfect-fifth { .scale-element(@perfect-fifth-color) }
-//    .minor-sixth { .scale-element(@minor-sixth-color) }
-//    .major-sixth { .scale-element(@major-sixth-color) }
-//    .minor-seventh { .scale-element(@minor-seventh-color) }
-//    .major-seventh { .scale-element(@major-seventh-color) }
-
-//    .octave-1-mixin(@color) { background-color: darken(@color, 36%); }
-//    .octave-2-mixin(@color) { background-color: darken(@color, 24%); }
-//    .octave-3-mixin(@color) { background-color: darken(@color, 12%); }
-//    .octave-4-mixin(@color) { background-color: @color; }
-//    .octave-5-mixin(@color) { background-color: lighten(@color, 12%); }
-//    .octave-6-mixin(@color) { background-color: lighten(@color, 24%); }
-//    .octave-7-mixin(@color) { background-color: lighten(@color, 36%); }
-//
-//    .octave-1.key { .octave-1-mixin(@key-color) }
-//    .octave-2.key { .octave-2-mixin(@key-color) }
-//    .octave-3.key { .octave-3-mixin(@key-color) }
-//    .octave-4.key { .octave-4-mixin(@key-color) }
-//    .octave-5.key { .octave-5-mixin(@key-color) }
-//    .octave-6.key { .octave-6-mixin(@key-color) }
-//    .octave-7.key { .octave-7-mixin(@key-color) }
-//
-//    .octave-1.minor-second { .octave-1-mixin(@minor-second-color) }
-//    .octave-2.minor-second { .octave-2-mixin(@minor-second-color) }
-//    .octave-3.minor-second { .octave-3-mixin(@minor-second-color) }
-//    .octave-4.minor-second { .octave-4-mixin(@minor-second-color) }
-//    .octave-5.minor-second { .octave-5-mixin(@minor-second-color) }
-//    .octave-6.minor-second { .octave-6-mixin(@minor-second-color) }
-//    .octave-7.minor-second { .octave-7-mixin(@minor-second-color) }
-//
-//    .octave-1.major-second { .octave-1-mixin(@major-second-color) }
-//    .octave-2.major-second { .octave-2-mixin(@major-second-color) }
-//    .octave-3.major-second { .octave-3-mixin(@major-second-color) }
-//    .octave-4.major-second { .octave-4-mixin(@major-second-color) }
-//    .octave-5.major-second { .octave-5-mixin(@major-second-color) }
-//    .octave-6.major-second { .octave-6-mixin(@major-second-color) }
-//    .octave-7.major-second { .octave-7-mixin(@major-second-color) }
-//
-//    .octave-1.minor-third { .octave-1-mixin(@minor-third-color) }
-//    .octave-2.minor-third { .octave-2-mixin(@minor-third-color) }
-//    .octave-3.minor-third { .octave-3-mixin(@minor-third-color) }
-//    .octave-4.minor-third { .octave-4-mixin(@minor-third-color) }
-//    .octave-5.minor-third { .octave-5-mixin(@minor-third-color) }
-//    .octave-6.minor-third { .octave-6-mixin(@minor-third-color) }
-//    .octave-7.minor-third { .octave-7-mixin(@minor-third-color) }
-//
-//    .octave-1.major-third { .octave-1-mixin(@major-third-color) }
-//    .octave-2.major-third { .octave-2-mixin(@major-third-color) }
-//    .octave-3.major-third { .octave-3-mixin(@major-third-color) }
-//    .octave-4.major-third { .octave-4-mixin(@major-third-color) }
-//    .octave-5.major-third { .octave-5-mixin(@major-third-color) }
-//    .octave-6.major-third { .octave-6-mixin(@major-third-color) }
-//    .octave-7.major-third { .octave-7-mixin(@major-third-color) }
-//
-//    .octave-1.perfect-fourth { .octave-1-mixin(@perfect-fourth-color) }
-//    .octave-2.perfect-fourth { .octave-2-mixin(@perfect-fourth-color) }
-//    .octave-3.perfect-fourth { .octave-3-mixin(@perfect-fourth-color) }
-//    .octave-4.perfect-fourth { .octave-4-mixin(@perfect-fourth-color) }
-//    .octave-5.perfect-fourth { .octave-5-mixin(@perfect-fourth-color) }
-//    .octave-6.perfect-fourth { .octave-6-mixin(@perfect-fourth-color) }
-//    .octave-7.perfect-fourth { .octave-7-mixin(@perfect-fourth-color) }
-//
-//    .octave-1.perfect-fifth { .octave-1-mixin(@perfect-fifth-color) }
-//    .octave-2.perfect-fifth { .octave-2-mixin(@perfect-fifth-color) }
-//    .octave-3.perfect-fifth { .octave-3-mixin(@perfect-fifth-color) }
-//    .octave-4.perfect-fifth { .octave-4-mixin(@perfect-fifth-color) }
-//    .octave-5.perfect-fifth { .octave-5-mixin(@perfect-fifth-color) }
-//    .octave-6.perfect-fifth { .octave-6-mixin(@perfect-fifth-color) }
-//    .octave-7.perfect-fifth { .octave-7-mixin(@perfect-fifth-color) }
-//
-//    .octave-1.minor-sixth { .octave-1-mixin(@minor-sixth-color) }
-//    .octave-2.minor-sixth { .octave-2-mixin(@minor-sixth-color) }
-//    .octave-3.minor-sixth { .octave-3-mixin(@minor-sixth-color) }
-//    .octave-4.minor-sixth { .octave-4-mixin(@minor-sixth-color) }
-//    .octave-5.minor-sixth { .octave-5-mixin(@minor-sixth-color) }
-//    .octave-6.minor-sixth { .octave-6-mixin(@minor-sixth-color) }
-//    .octave-7.minor-sixth { .octave-7-mixin(@minor-sixth-color) }
-//
-//    .octave-1.major-sixth { .octave-1-mixin(@major-sixth-color) }
-//    .octave-2.major-sixth { .octave-2-mixin(@major-sixth-color) }
-//    .octave-3.major-sixth { .octave-3-mixin(@major-sixth-color) }
-//    .octave-4.major-sixth { .octave-4-mixin(@major-sixth-color) }
-//    .octave-5.major-sixth { .octave-5-mixin(@major-sixth-color) }
-//    .octave-6.major-sixth { .octave-6-mixin(@major-sixth-color) }
-//    .octave-7.major-sixth { .octave-7-mixin(@major-sixth-color) }
-//
-//    .octave-1.minor-seventh { .octave-1-mixin(@minor-seventh-color) }
-//    .octave-2.minor-seventh { .octave-2-mixin(@minor-seventh-color) }
-//    .octave-3.minor-seventh { .octave-3-mixin(@minor-seventh-color) }
-//    .octave-4.minor-seventh { .octave-4-mixin(@minor-seventh-color) }
-//    .octave-5.minor-seventh { .octave-5-mixin(@minor-seventh-color) }
-//    .octave-6.minor-seventh { .octave-6-mixin(@minor-seventh-color) }
-//    .octave-7.minor-seventh { .octave-7-mixin(@minor-seventh-color) }
-//
-//    .octave-1.major-seventh { .octave-1-mixin(@major-seventh-color) }
-//    .octave-2.major-seventh { .octave-2-mixin(@major-seventh-color) }
-//    .octave-3.major-seventh { .octave-3-mixin(@major-seventh-color) }
-//    .octave-4.major-seventh { .octave-4-mixin(@major-seventh-color) }
-//    .octave-5.major-seventh { .octave-5-mixin(@major-seventh-color) }
-//    .octave-6.major-seventh { .octave-6-mixin(@major-seventh-color) }
-//    .octave-7.major-seventh { .octave-7-mixin(@major-seventh-color) }
-
 }
 
 .intervals {
     height: 80px;
 
     .title {
-        //border-bottom: 1px solid #999;
+    //border-bottom: 1px solid #999;
     }
 
 
@@ -228,8 +51,6 @@
         width: 145px;
         border-left: 1px solid #999;
         padding: 0 0 0 5px ;
-        //margin: 0 0 0 4px;
-        //margin: 0 0 0 5px;
         color: #999;
     }
 
@@ -262,5 +83,125 @@
         font-size: 11px;
     }
 
+}
+
+.fretboard-container {
+    background-color: #fff;
+    .drop-shadow(0, 0, 10px, 0.5);
+    overflow-x: scroll;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+
+.fretboard {
+
+    display: table;
+    width: 2280px;
+    margin: 40px;
+    .fret-numbers {
+        display: table-row;
+        .fret-number {
+            display: table-cell;
+            text-align: center;
+            .fret-number-label {
+                font-size: 75%;
+                color: #999;
+                padding: 3px;
+            }
+        }
+    }
+
+    .fret-marks {
+        display: table-row;
+        .fret-mark {
+            display: table-cell;
+            text-align: center;
+            .fret-mark-label {
+                font-size: 200%;
+                color: #999;
+                padding: 3px;
+            }
+        }
+    }
+
+    .string-1,
+    .string-2 {
+        background: #eee;
+    }
+    .string-3,
+    .string-4,
+    .string-5,
+    .string-6 {
+        background: #e5e5e5;
+    }
+
+    .string-first {
+        .pitch {
+            border-top: 1px solid #d2691e;
+        }
+    }
+
+    .string-last {
+        .pitch {
+            border-bottom: 1px solid #d2691e;
+        }
+    }
+
+    .string {
+        display: table-row;
+        .pitch {
+            display: table-cell;
+            height: 30px;
+            border-left: 1px solid #d2691e;
+            padding: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            color: #ccc;
+            vertical-align: middle;
+            text-align: center;
+
+            .pitch-name {
+                padding: 4px;
+                border-radius: 12px;
+            }
+            .pitch-interval-name {
+                position: relative;
+                right: 0;
+                top: 0;
+            }
+        }
+    }
+
+    .scale-element(@color) {
+        .pitch-name {
+            background-color: @color;
+            color: #fff;
+        }
+    }
+
+    .pitch.selected {
+        .pitch-name {
+            background-color: @interval-color;
+            color: #fff;
+        }
+    }
+
+    .pitch.key {
+        background-color: @key-color;
+        color: #fff;
+    }
+}
+
+.content-footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #eee;
+
+    .copyright {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
 }
 

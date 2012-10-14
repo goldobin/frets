@@ -41,7 +41,37 @@ $.fn.frets = function() {
 
             $(".intervals").intervals("intervals", intervals);
             $(".fretboard").fretboard("intervals", intervals);
+
+            return false;
+        });
+
+        var navVisible = true,
+            showNav = element.find(".nav-intervals-show"),
+            hideNav = element.find(".nav-intervals-hide"),
+            navContent = element.find(".nav-intervals");
+
+        function updateNavigationVisibility() {
+            if (navVisible) {
+                $(this).hide();
+                navContent.show();
+                showNav.hide();
+            } else {
+                $(this).show();
+                navContent.hide();
+                showNav.show();
+            }
+        }
+
+        showNav.click(function() {
+            navVisible = true;
+            updateNavigationVisibility();
+        });
+
+        hideNav.click(function() {
+            navVisible = false;
+            updateNavigationVisibility();
         })
+
     });
 
     return this;
