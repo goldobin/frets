@@ -2,17 +2,40 @@
 
 (function(m, $, _) {
 
-var INTERVAL_SEQUENCE_MAPPING = {};
+var INTERVAL_SET_MAPPING = {};
+
+function intervalNameToClassName(intervalName) {
+    return intervalName.toLowerCase().replace(/_/g, "-")
+}
 
 function appendToIntervalSequenceMapping(intervalSequences) {
     _.each(intervalSequences, function(v, k) {
-        INTERVAL_SEQUENCE_MAPPING[k.toLowerCase().replace(/_/g, "-")] = v;
+        INTERVAL_SET_MAPPING[intervalNameToClassName(k)] = v;
     })
 }
+
 
 appendToIntervalSequenceMapping(m.chord);
 appendToIntervalSequenceMapping(m.scale);
 appendToIntervalSequenceMapping(m.mode);
+
+function highlightInterval(instance, intervals) {
+    var intervalSetNames = m.intervals.exactMatch(intervals),
+        intervalSetClasses = _.map(intervalSetNames, function(v) {
+            return intervalNameToClassName(v);
+        });
+
+
+    instance.find(".interval-sequence-nav-element").each(function() {
+        var element = $(this),
+            intervalSetClass = element.data("interval-sequence-name");
+        if (intervalSetClasses.indexOf(intervalSetClass) > -1) {
+            element.parent().addClass("exact-match");
+        } else {
+            element.parent().removeClass("exact-match");
+        }
+    });
+}
 
 $.fn.frets = function() {
 
@@ -28,7 +51,9 @@ $.fn.frets = function() {
         $(".intervals")
             .intervals()
             .on("intervalsChange", function() {
-                $(".fretboard").fretboard("intervals", $(this).intervals("intervals"))
+                var intervals = $(this).intervals("intervals");
+                $(".fretboard").fretboard("intervals", intervals);
+                highlightInterval(element, intervals);
             })
             .on("keyChange", function() {
                 $(".fretboard").fretboard("key", $(this).intervals("key"))
@@ -37,10 +62,11 @@ $.fn.frets = function() {
 
         element.find(".interval-sequence-nav-element").click(function() {
             var intervalSequenceName = $(this).data("interval-sequence-name"),
-                intervals = INTERVAL_SEQUENCE_MAPPING[intervalSequenceName];
+                intervals = INTERVAL_SET_MAPPING[intervalSequenceName];
 
             $(".intervals").intervals("intervals", intervals);
             $(".fretboard").fretboard("intervals", intervals);
+            highlightInterval(element, intervals);
 
             return false;
         });

@@ -138,7 +138,8 @@ var music = {};
         MIXOLYDIAN_MODE: rotate(scale.MAJOR_SCALE, 4),
         AEOLIAN_MODE: rotate(scale.MAJOR_SCALE, 5),
         LOCRIAN_MODE: rotate(scale.MAJOR_SCALE, 6)
-    };
+    },
+    ALL_INTERVAL_SETS = _.extend({}, scale, mode, chord);
 
     _.extend(m, {
         PITCH_NAMES: [ "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#" ],
@@ -190,6 +191,21 @@ var music = {};
             name: function() {
                 return _name;
             }
+        }
+    };
+
+    m.intervals = {
+        exactMatch: function(intervals) {
+            var result = [];
+
+            _.each(ALL_INTERVAL_SETS, function(v, k) {
+                if (_.difference(v, intervals).length == 0
+                    && _.difference(intervals, v).length == 0) {
+                    result.push(k);
+                }
+            });
+
+            return result;
         }
     };
 
