@@ -19,16 +19,20 @@
 @major-seventh-color: #65bd1b;
 @minor-seventh-color: #498333;
 
+body {
+    background-color: #eee;
+}
+
 .content-header {
 
-    background: #5393bd;
+    background: #1b0504;
     padding: 15px;
     margin-bottom: 20px;
     .drop-shadow(0, 0, 20px, 0.5);
     border-bottom: 1px dashed  #1b2436;
 
-    color: #1b2436;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
 
     .brand {
         color: #fff;
@@ -89,61 +93,88 @@
     background-color: #fff;
     .drop-shadow(0, 0, 10px, 0.5);
     overflow-x: scroll;
-    border-top: 1px solid #999;
-    border-bottom: 1px solid #999;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
 }
 
 .fretboard {
 
     display: table;
     width: 2280px;
-    margin: 40px;
+
     .fret-numbers {
         display: table-row;
         .fret-number {
             display: table-cell;
+            background: url("../img/fret-texture.png") no-repeat;
             text-align: center;
+            vertical-align: bottom;
+            height: 60px;
+            border: none;
+            border-collapse: true;
+            padding-left: 12px;
             .fret-number-label {
                 font-size: 75%;
-                color: #999;
-                padding: 3px;
+                color: #fff;
+
+
             }
         }
     }
 
     .fret-marks {
         display: table-row;
+
         .fret-mark {
             display: table-cell;
+            background: url("../img/fret-texture.png") no-repeat;
+            background-position: 0 -300px;
+            height: 60px;
             text-align: center;
+            border: none;
+            border-collapse: true;
+            padding-left: 12px;
             .fret-mark-label {
-                font-size: 200%;
-                color: #999;
-                padding: 3px;
+                color: #fff;
             }
         }
     }
 
-    .string-1,
-    .string-2 {
-        background: #eee;
-    }
-    .string-3,
-    .string-4,
-    .string-5,
-    .string-6 {
-        background: #e5e5e5;
-    }
-
-    .string-first {
+    .string-1 {
         .pitch {
-            border-top: 1px solid #d2691e;
+            background: url("../img/fret-texture.png") no-repeat;
+            background-position: 0 -60px;
         }
     }
-
-    .string-last {
+    .string-2 {
         .pitch {
-            border-bottom: 1px solid #d2691e;
+            background: url("../img/fret-texture.png") no-repeat;
+            background-position: 0 -100px;
+        }
+    }
+    .string-3 {
+        .pitch {
+            background: url("../img/fret-texture.png") no-repeat;
+            background-position: 0 -140px;
+        }
+    }
+    .string-4 {
+        .pitch {
+            background: url("../img/fret-texture.png") no-repeat;
+            background-position: 0 -180px;
+        }
+    }
+    .string-5 {
+        .pitch {
+            background: url("../img/fret-texture.png") no-repeat;
+            background-position: 0 -220px;
+        }
+    }
+    .string-6 {
+        .pitch {
+            background: url("../img/fret-texture.png") no-repeat;
+            background-position: 0 -260px;
         }
     }
 
@@ -151,18 +182,20 @@
         display: table-row;
         .pitch {
             display: table-cell;
-            height: 30px;
-            border-left: 1px solid #d2691e;
-            padding: 5px;
+            height: 40px;
+            border: none;
+            border-collapse: true;
             cursor: pointer;
             font-size: 12px;
             color: #ccc;
             vertical-align: middle;
             text-align: center;
+            padding-left: 12px;
 
             .pitch-name {
                 padding: 4px;
                 border-radius: 12px;
+                color: transparent;
             }
             .pitch-interval-name {
                 position: relative;
@@ -181,15 +214,29 @@
 
     .pitch.selected {
         .pitch-name {
-            background-color: @interval-color;
+            background-color: #711e96;
+            border: 2px solid #fff;
             color: #fff;
         }
     }
 
     .pitch.key {
-        background-color: @key-color;
-        color: #fff;
+        .pitch-name {
+            background-color: #fdffff;
+            border: 2px solid #fff;
+            color: #333;
+        }
     }
+
+    .pitch.selected.key {
+        .pitch-name {
+            background-color: #711e96;
+            border: 2px solid #711e96;
+            color: #fff;
+        }
+    }
+
+
 }
 
 .content-footer {

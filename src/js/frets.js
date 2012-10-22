@@ -77,4 +77,5 @@ $.fn.frets = function() {
     return this;
 }
 
-})(music, jQuery, _)
+})(music, jQuery, _);
+
