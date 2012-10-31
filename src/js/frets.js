@@ -14,7 +14,6 @@ function appendToIntervalSequenceMapping(intervalSequences) {
     })
 }
 
-
 appendToIntervalSequenceMapping(m.chord);
 appendToIntervalSequenceMapping(m.scale);
 appendToIntervalSequenceMapping(m.mode);

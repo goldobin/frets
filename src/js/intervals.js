@@ -1,4 +1,6 @@
-
+/*!
+ * Copyright 2012 Oleksandr Goldobin
+ */
 
 (function(m, $, _) {
 

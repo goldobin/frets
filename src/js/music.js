@@ -1,3 +1,6 @@
+/*!
+ * Copyright 2012 Oleksandr Goldobin
+ */
 
 var music = {};
 
@@ -6,8 +9,7 @@ var music = {};
     function rotate(intervals, steps) {
         var a = intervals
             .slice(steps, intervals.length)
-            .concat(intervals.slice(0, steps)),
-            result = [];
+            .concat(intervals.slice(0, steps));
 
         return _.map(a, function(interval) {
 
@@ -277,7 +279,7 @@ var music = {};
             octavePositions: function(num) {
                 var result = [];
 
-                _.each(_octaveMapping[num], function(pitchPositions, k) {
+                _.each(_octaveMapping[num], function(pitchPositions) {
                     _.each(pitchPositions, function(positions) {
                         _.each(positions, function(position) {
                             result.push(position)

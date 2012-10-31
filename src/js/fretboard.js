@@ -1,3 +1,6 @@
+/*!
+ * Copyright 2012 Oleksandr Goldobin
+ */
 
 (function(m, $, _) {
 
@@ -26,10 +29,6 @@ var DEFAULTS = {
 function nutToFretDistance(scale, fret) {
     return scale - (scale / (Math.pow(2, (fret / 12))));
 }
-
-//function bridgeToFretDistance(scale, fret) {
-//    return scale - nutToFretDistance(scale, fret);
-//}
 
 function buildFretLengthsScaleInPercents(frets, coeff) {
     var SCALE = 25.5,
