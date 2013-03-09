@@ -9,7 +9,8 @@ var DEFAULTS = {
         tuning: "regular",
         size: 22,
         displayNumbers: true
-}, INTERVAL_CLASSES = [
+},
+INTERVAL_CLASSES = [
     "perfect-unison",
     "minor-second",
     "major-second",
@@ -22,7 +23,8 @@ var DEFAULTS = {
     "major-sixth",
     "minor-seventh",
     "major-seventh"
-], ONE_DOT_MARK_POSITIONS = [
+],
+ONE_DOT_MARK_POSITIONS = [
     3, 5, 7, 9
 ];
 
@@ -111,31 +113,33 @@ $.fn.fretboard = function() {
     if (arguments.length > 0 && typeof arguments[0] === "string") {
         var props = {
             key: function(v) {
-                if (v == null) {
+                if (v != null) {
+                    self.each(function () {
+                        var instance = $(this);
+                        instance.data("key", v);
+                        update(instance);
+                    });
+                    return null;
+                } else {
                     if (self.size() <= 0) {
                         return null;
                     }
                     return $(self.get(0)).data("key");
-                } else {
-                    self.each(function() {
-                        var instance = $(this);
-                        instance.data("key", v);
-                        update(instance);
-                    })
                 }
             },
             intervals: function(v) {
-                if (v == null) {
+                if (v != null) {
+                    self.each(function () {
+                        var instance = $(this);
+                        instance.data("intervals", v);
+                        update(instance);
+                    });
+                    return null;
+                } else {
                     if (self.size() <= 0) {
                         return [];
                     }
                     return $(self.get(0)).data("intervals");
-                } else {
-                    self.each(function() {
-                        var instance = $(this);
-                        instance.data("intervals", v);
-                        update(instance);
-                    })
                 }
             }
         },
@@ -145,7 +149,7 @@ $.fn.fretboard = function() {
             return prop(arguments[1]);
         }
 
-        return;
+        return null;
     }
 
     settings = $.extend({}, DEFAULTS, arguments[0]);

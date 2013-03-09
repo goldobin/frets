@@ -258,14 +258,22 @@ var music = {};
             at: function(pos) {
                 return _pitchTable[pos.string][pos.fret];
             },
-            position: function(key) {
-                return _octaveMapping[key.octave()][key.name()];
-            },
-            positions: function(key) {
-                var result = [];
+            positions: function(key, startFret, endFret) {
+                var result = [],
+                    considerStartFret = typeof startFret === 'number',
+                    considerEndFret = typeof endFret === 'number';
                 _.each(_pitchTable, function(frets, s) {
                     _.each(frets, function(pitch, f) {
                         if (pitch.name() == key.name()) {
+
+                            if (considerStartFret && f < startFret) {
+                                return;
+                            }
+
+                            if (considerEndFret && f >= endFret) {
+                                return;
+                            }
+
                             result.push({
                                 string: s,
                                 fret: f
@@ -288,14 +296,56 @@ var music = {};
                 });
                 return result;
             },
-            intervalsPositions: function(key, intervals) {
-                var self = this,
-                    result = new Array(intervals.length);
+            intervalsPositions: function(key, intervals, startFret, endFret) {
+                var self = this;
 
-                _.each(intervals, function(v, i) {
-                    result[i] = self.positions(key.increment(v));
+                return _.map(intervals, function(v, i) {
+                    return self.positions(key.increment(v), startFret, endFret);
                 });
-                return result;
+            },
+            chordPositions: function(key, intervals, startFret, endFret) {
+            }
+
+        }
+    };
+
+    m.guitar.pattern = function(guitar, keyPosition, relativePositions) {
+        return {
+            guitar: function() {
+                return guitar;
+            },
+            key: function() {
+                guitar.at(keyPosition)
+            },
+            keyPosition: function () {
+                return _.extend({}, keyPosition);
+            },
+            keyPositions: function() {
+
+            },
+            positions: function() {
+                return _.map(relativePositions, function(v) {
+                    return {
+                        fret: keyPosition.fret + v.fret,
+                        string: keyPosition.string + v.string
+                    }
+                });
+            },
+            translate: function(keyPosition) {
+                var keyOfPattern = false;
+                _.each(this.keys(), function(v) {
+                    if (v.fret == keyPosition.fret
+                        && v.string == keyPosition.string) {
+                        keyOfPattern = true;
+                        return false;
+                    }
+                });
+
+                if (keyOfPattern) {
+                    return this;
+                }
+
+                // TODO: Make a translation
             }
         }
     };
